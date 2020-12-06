@@ -1,8 +1,8 @@
 <template>
     <div>
- <v-card  class="ma-3 elevation-5">
+               <v-card  class="ma-3 elevation-5">
             <v-card-title primary-title>
-                Customer
+                Product
             </v-card-title>
             <v-card-text>
 
@@ -12,12 +12,12 @@
                                <v-text-field
                                 solo
                                 clearable
-                                name="name"
-                                label="Name"
-                                id="name"
+                                name="title"
+                                label="Title"
+                                id="title"
                                 single-line
                                 hide-details
-                                v-model="name"
+                                v-model="title"
                                 required
                                ></v-text-field>
                             </v-col>
@@ -25,26 +25,26 @@
                                <v-text-field
                                 solo
                                 clearable
-                                name="phone"
-                                label="Phone"
-                                id="phone"
+                                name="discription"
+                                label="Discription"
+                                id="discription"
                                  single-line
                                 hide-details
-                                v-model="phone"
+                                v-model="discription"
                                 required
-                                type="number"
                                ></v-text-field>
                             </v-col>
                              <v-col cols="12" sm="6">
                                <v-text-field
                                 solo
                                 clearable
-                                name="address"
-                                label="Address"
-                                id="address"
+                                name="price"
+                                label="Price"
+                                type="number"
+                                id="price"
                                 single-line
                                 hide-details
-                                v-model="address"
+                                v-model="price"
                                 required
                                ></v-text-field>
                             </v-col>
@@ -52,10 +52,11 @@
                                <v-text-field
                                 solo
                                 clearable
-                                name="email"
-                                label="Email"
-                                id="email"
-                                v-model="email"
+                                name="stock"
+                                label="Stock"
+                                type="number"
+                                id="stock"
+                                v-model="stock"
                                 required
                                 single-line
                                 hide-details
@@ -63,7 +64,7 @@
                                ></v-text-field>
                             </v-col>
                             <v-col cols="12" sm="6">
-                                <v-btn @click="save()" color="#56556e" dark>Create</v-btn>
+                                <v-btn @click="update()" color="#56556e" dark>Update</v-btn>
                             </v-col>
                         </v-row>
                     </v-form>
@@ -105,7 +106,7 @@ export default {
 	           stock:this.stock
 
            }
-           const resp = await fetch(`api/product/update/${this.$route.params.id}`,{
+           const resp = await fetch(`/api/product/update/${this.$route.params.id}`,{
                method:'PUT',
                headers:{
                    'Accept': 'application/json',

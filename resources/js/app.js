@@ -23,6 +23,7 @@ import App from './components/app';
 import 'vuetify/dist/vuetify.min.css';
 import '@mdi/font/css/materialdesignicons.css';
 import 'vue-snotify/styles/material.css';
+import n from 'vue-snotify/styles/material.css';
 import Home from './components/ExampleComponent.vue'
 import Login from './components/login.vue'
 import {Authcek,AuthLogout} from './Auth.js'
@@ -32,7 +33,21 @@ import inv from './components/inv.vue'
 import dinv from './components/detailinv.vue'
 import Editprdk from './components/editproduct.vue'
 import Editcus from './components/editcustomers.vue'
+import VueHtmlToPaper from 'vue-html-to-paper'
+import print from './components/print.vue'
 Vue.use(Authcek);
+const opt = {
+    name: '_blank',
+    specs: [
+      'fullscreen=yes',
+      'titlebar=yes',
+      'scrollbars=yes'
+    ], styles: [
+        'https://unpkg.com/purecss@2.0.3/build/pure-min.css'
+
+      ]
+    }
+Vue.use(VueHtmlToPaper, opt);
 
 const routes = [
     {
@@ -63,6 +78,10 @@ const routes = [
         path:'/Editcus/:id',
         name:'Editcus',
         component:Editcus
+    },{
+        path:'/print/:id',
+        name:'print',
+        component:print
     }
   ]
 
@@ -83,9 +102,14 @@ const app = new Vue({
             console.log(data);
             localStorage.setItem('name',data.body.name)
             localStorage.setItem('email',data.body.email)
-            if (data.body.status == 200 || data.status == 400) {
+            if (!data.body.status == 200 || data.status == 400) {
                 router.push({path:'/login'})
             }
+            if (data.body.status == false) {
+                router.push({path:'/login'})
+            }
+            console.log(data.body.status );
+            console.log(data);
         },
         NoAuth(){
             router.push({path:'/login'})

@@ -105,6 +105,8 @@ class InvoiceHandel extends Controller
             'invoices.note',
             'invoices.status',
             'invoices.total',
+            'invoices.created_at',
+            'invoices.codeinv',
             'customers.name',
             'customers.phone',
             'customers.address',
@@ -180,5 +182,4 @@ class InvoiceHandel extends Controller
             'average_product_price'=>$i
         ]);
     }
-
 }

@@ -50,7 +50,8 @@
           { title: 'Dashboard', icon: 'mdi-view-dashboard', link:'/' },
           { title: 'Invoices', icon: 'mdi-note-text',link:'/invoice' },
           { title: 'Products', icon: 'mdi-format-list-bulleted',link:'/product' },
-          { title: 'Customers', icon: 'mdi-account',link:'/customer' },
+          { title: 'Customers', icon: 'mdi-account',link:'/customer','click':'lg' },
+
           { title: 'About', icon: 'mdi-help-box',link:'/n' },
         ],
         right: null,
@@ -63,6 +64,8 @@
         // n.email =localStorage.getItem(email)
         // n.name = localStorage.getItem(name)
 
-    }
+    },methods: {
+
+    },
   }
 </script>

@@ -51,7 +51,6 @@
                 <v-btn @click="look(datas.item.invoices_id)" small  fab class="mx-2" color="primary">
                     <v-icon>mdi-pencil</v-icon>
                 </v-btn>
-
             </td>
           </tr>
         </template>

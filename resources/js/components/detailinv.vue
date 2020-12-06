@@ -39,7 +39,7 @@
                                  </tr>
                              </thead>
                              <tbody>
-                                 <tr v-for="item in datainv.detail">
+                                 <tr v-for="item in datainv.detail" v-bind:key="item.id">
                                      <td>{{item.title}}</td>
                                      <td>{{item.discription}}</td>
                                      <td>Rp. {{item.price}}</td>
@@ -69,7 +69,7 @@
                              </tbody>
                          </template>
                      </v-simple-table>
-
+                     <router-link class="v-btn" :to="{name:'print',params:{id:this.$route.params.id}}" target="_blank"><v-icon>mdi-printer</v-icon></router-link>
             </v-card-text>
         </v-card>
     </div>
@@ -144,6 +144,8 @@ export default {
                 await this.getInvdata()
                 await this.prdk()
             }
+        },r(){
+            this.$router.push()
         }
     },
 

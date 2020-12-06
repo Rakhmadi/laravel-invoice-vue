@@ -75,6 +75,7 @@
 export default {
     async mounted(){
         await this.g()
+        
     },
     data(){
         return{

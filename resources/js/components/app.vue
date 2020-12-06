@@ -12,6 +12,10 @@
     <v-app-bar color="#56556e" dark app>
       <v-app-bar-nav-icon v-show="d" @click="drawer = !drawer"><v-icon>mdi-menu</v-icon></v-app-bar-nav-icon>
       <v-toolbar-title>Application Invoice</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn color="transparent" @click="lg()" small elevation="0" fab >
+         <v-icon>mdi-exit-to-app</v-icon>
+      </v-btn>
     </v-app-bar>
 
     <v-main  >
@@ -37,8 +41,21 @@ import Drawer from './drawer'
       },
     data: () => ({
         drawer: null,
-        d:true
+        d:true,
+        resp:''
 
         }),
+        methods: {
+            async lg(){
+                const resp = await fetch(`/api/logout/?token=${this.$root.token()}`)
+            .then(_=>(_.json()))
+            this.resp = resp
+            if (resp.msg == "success") {
+                this.$root.notifSucces("","Success")
+                this.$router.push({ path:'/login'})
+            }
+
+            }
+        },
   }
 </script>
